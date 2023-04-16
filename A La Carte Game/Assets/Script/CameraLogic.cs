@@ -6,7 +6,7 @@ public class CameraLogic : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform player;
-    private float eye = 2f;
+    private int view = 1;
     private bool zoom = false;
     // Start is called before the first frame update
     void Start()
@@ -19,18 +19,23 @@ public class CameraLogic : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            zoom = !zoom;
+            view += 1;
+            if(view == 3)
+            {
+                view = 1;
+            }
         }
 
-        if (zoom)
+        if (view == 1)
         {
-            transform.position = new Vector3(player.position.x + eye, player.position.y + eye, player.position.z + eye);
-            transform.rotation = Quaternion.identity;
-        }
-        else
-        {
+            transform.rotation = Quaternion.Euler(38.874f, 0f, 0f);
             transform.position = new Vector3(player.position.x, player.position.y + 3.76f, player.position.z - 5f);
-            transform.rotation = Quaternion.Euler(38.874f, 0, 0);
+            
+        }
+        else if(view ==2 )
+        {
+            transform.position = new Vector3(player.position.x, player.position.y + 7.76f, player.position.z - 5f);
+            transform.rotation = Quaternion.Euler(60f,0f,0f);
         }
     }
 }
