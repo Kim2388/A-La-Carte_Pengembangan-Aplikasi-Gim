@@ -19,17 +19,18 @@ public class CameraLogic : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (!zoom)
-            {
-                transform.position = new Vector3(player.position.x + eye, player.position.y + eye, player.position.z + eye);
-                zoom = true;
-            }
-            else
-            {
-                transform.position = new Vector3(player.position.x, player.position.y + 2.76f, player.position.z - 5f);
-                zoom = false;
-            }
+            zoom = !zoom;
         }
 
+        if (zoom)
+        {
+            transform.position = new Vector3(player.position.x + eye, player.position.y + eye, player.position.z + eye);
+            transform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            transform.position = new Vector3(player.position.x, player.position.y + 3.76f, player.position.z - 5f);
+            transform.rotation = Quaternion.Euler(38.874f, 0, 0);
+        }
     }
 }
