@@ -7,11 +7,18 @@ public class CameraLogic : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
     private int view = 1;
-    private bool zoom = false;
+    private float nilaix, nilaiy, nilaiz, rotasix, rotasiy, rotasiz;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(player.position.x, player.position.y + 2.76f, player.position.z - 5f);
+        nilaix = transform.position.x - player.position.x;
+        nilaiy = transform.position.y - player.position.y + 3f;
+        nilaiz = transform.position.z - player.position.z;
+        rotasix =  -145.8f;
+        rotasiy = 10.864f;
+        rotasiz = 0;
+
+
     }
 
     // Update is called once per frame
@@ -25,17 +32,22 @@ public class CameraLogic : MonoBehaviour
                 view = 1;
             }
         }
-
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+        if (Input.GetMouseButton(1))
+        {
+            rotasix += mouseX *2f;
+            rotasiy += mouseY *2f;
+        }
         if (view == 1)
         {
-            transform.rotation = Quaternion.Euler(38.874f, 0f, 0f);
-            transform.position = new Vector3(player.position.x, player.position.y + 3.76f, player.position.z - 5f);
-            
+            transform.position = new Vector3(player.position.x + nilaix -3f, player.position.y + nilaiy, player.position.z + nilaiz);
+            transform.rotation = Quaternion.Euler(rotasiy, rotasix, rotasiz);
         }
         else if(view ==2 )
         {
-            transform.position = new Vector3(player.position.x, player.position.y + 7.76f, player.position.z - 5f);
-            transform.rotation = Quaternion.Euler(60f,0f,0f);
+            transform.position = new Vector3(player.position.x + nilaix - 2f , player.position.y + nilaiy + 2f, player.position.z + 2f + nilaiz);
+            transform.rotation = Quaternion.Euler(rotasiy, rotasix - 1f, rotasiz);
         }
     }
 }
