@@ -11,11 +11,11 @@ public class CameraLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nilaix = transform.position.x - player.position.x;
-        nilaiy = transform.position.y - player.position.y + 3f;
+        nilaix = transform.position.x - player.position.x +1f;
+        nilaiy = transform.position.y - player.position.y + 2f;
         nilaiz = transform.position.z - player.position.z;
         rotasix =  -145.8f;
-        rotasiy = 10.864f;
+        rotasiy = 15.864f;
         rotasiz = 0;
 
 

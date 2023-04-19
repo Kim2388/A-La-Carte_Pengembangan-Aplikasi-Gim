@@ -7,13 +7,16 @@ public class PlayerLogic : MonoBehaviour
     public float speed = 1.5f;
     private Rigidbody rb;
     private Vector3 posisiAwal;
+    public Transform start;
+    public Transform finish;
     // Start is called before the first frame update
     void Start()
     {     
         rb = GetComponent<Rigidbody>();
-        posisiAwal = new Vector3(transform.position.x,transform.position.y,transform.position.z);
+        posisiAwal = new Vector3(start.position.x + 1.5f,start.position.y + 2.5f ,start.position.z);
+        transform.position = posisiAwal;
     }
-    // Update is called once per frame
+    // Update is called once per framea
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -27,6 +30,9 @@ public class PlayerLogic : MonoBehaviour
         if (transform.position.y <= 3.55 || Input.GetKey(KeyCode.R)) {
 
             transform.position = posisiAwal;
+        }
+        if(transform.position.z <= finish.position.z) {
+            print("sudah finish bro");
         }
         rb.AddForce(movement);
     }
