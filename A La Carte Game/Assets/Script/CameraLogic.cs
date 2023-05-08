@@ -12,11 +12,11 @@ public class CameraLogic : MonoBehaviour
     void Start()
     {
         nilaix = transform.position.x - player.position.x +1f;
-        nilaiy = transform.position.y - player.position.y + 2f;
+        nilaiy = transform.position.y - player.position.y + 5f;
         nilaiz = transform.position.z - player.position.z;
         rotasix =  -145.8f;
-        rotasiy = 15.864f;
-        rotasiz = 0;
+        rotasiy = 25.864f;
+        rotasiz = 5f;
 
 
     }

@@ -13,7 +13,7 @@ public class PlayerLogic : MonoBehaviour
     void Start()
     {     
         rb = GetComponent<Rigidbody>();
-        posisiAwal = new Vector3(start.position.x + 1.5f,start.position.y + 2.5f ,start.position.z);
+        posisiAwal = new Vector3(start.position.x + 1.5f,start.position.y + 2.5f ,start.position.z -1f);
         transform.position = posisiAwal;
     }
     // Update is called once per framea
