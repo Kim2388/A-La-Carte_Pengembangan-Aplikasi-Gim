@@ -9,7 +9,6 @@ public class PlayerLogic : MonoBehaviour
     private Vector3 posisiAwal;
     public Transform start;
     public Transform finish;
-    public GameObject kotak;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +18,17 @@ public class PlayerLogic : MonoBehaviour
         transform.position = posisiAwal;
     }
     // Update is called once per framea
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            transform.position = posisiAwal;
+        }
+        else if (collision.gameObject.CompareTag("Finish"))
+        {
+            print("sudah finish bro");
+        }
+    }
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -29,15 +39,10 @@ public class PlayerLogic : MonoBehaviour
         {
             rb.AddForce(movement * speed);
         }
-        if (transform.position.y <= 3.5f || Input.GetKey(KeyCode.R)) {
+        if (Input.GetKey(KeyCode.R)) {
             transform.position = posisiAwal;
         }
-        if(transform.position.z <= finish.position.z) {
-            
         
-            print("sudah finish bro");
-            
-        }
         rb.AddForce(movement);
     }
     
