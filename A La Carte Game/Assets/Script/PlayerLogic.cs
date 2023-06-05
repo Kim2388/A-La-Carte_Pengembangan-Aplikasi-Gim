@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerLogic : MonoBehaviour
 {
     public float speed = 1.5f;
@@ -10,6 +10,8 @@ public class PlayerLogic : MonoBehaviour
     public Transform start;
     public Transform finish;
     // Start is called before the first frame update
+    
+    
     void Start()
     {
         
@@ -23,10 +25,11 @@ public class PlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Respawn"))
         {
             transform.position = posisiAwal;
+            
         }
         else if (collision.gameObject.CompareTag("Finish"))
         {
-            print("sudah finish bro");
+            SceneManager.LoadScene("Level 2");
         }
     }
     void Update()
@@ -41,6 +44,7 @@ public class PlayerLogic : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.R)) {
             transform.position = posisiAwal;
+            
         }
         
         rb.AddForce(movement);
