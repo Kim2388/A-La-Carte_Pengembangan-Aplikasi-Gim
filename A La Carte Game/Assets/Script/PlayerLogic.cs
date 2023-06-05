@@ -25,11 +25,7 @@ public class PlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Respawn"))
         {
             transform.position = posisiAwal;
-            
-        }
-        else if (collision.gameObject.CompareTag("Finish"))
-        {
-            SceneManager.LoadScene("Level 2");
+            DecTimLogic.instance.time -= 3;
         }
     }
     void Update()
@@ -42,9 +38,10 @@ public class PlayerLogic : MonoBehaviour
         {
             rb.AddForce(movement * speed);
         }
-        if (Input.GetKey(KeyCode.R)) {
+        if (Input.GetKeyDown(KeyCode.R)) {
             transform.position = posisiAwal;
-            
+            DecTimLogic.instance.time -= 3;
+
         }
         
         rb.AddForce(movement);
