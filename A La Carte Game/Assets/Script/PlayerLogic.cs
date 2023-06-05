@@ -43,7 +43,9 @@ public class PlayerLogic : MonoBehaviour
             DecTimLogic.instance.time -= 3;
 
         }
-        
+        if(DecTimLogic.instance.time <= 0) {
+            print("waktu habis");
+        }
         rb.AddForce(movement);
     }
     
