@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class DecTimLogic : MonoBehaviour
 {
     public static DecTimLogic instance;
     public int time;
     private int counter;
+    private TextMeshProUGUI text;
     // Start is called before the first frame update
 
     private void Awake()
@@ -19,6 +20,7 @@ public class DecTimLogic : MonoBehaviour
     void Start()
     {
         counter = 0;
+        text = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,10 @@ public class DecTimLogic : MonoBehaviour
         if (counter % 1000 == 0) { 
             time -= 1;
         }
-        print(time);
+        text.text = time.ToString();
+        if (time <= 0)
+        {
+            print("waktu habis");
+        }
     }
 }

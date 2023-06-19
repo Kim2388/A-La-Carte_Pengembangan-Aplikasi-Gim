@@ -17,8 +17,6 @@ public class CameraLogic : MonoBehaviour
         rotasix =  -145.8f;
         rotasiy = 25.864f;
         rotasiz = 5f;
-
-
     }
 
     // Update is called once per frame

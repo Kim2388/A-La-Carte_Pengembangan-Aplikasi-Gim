@@ -8,16 +8,18 @@ public class PlayerLogic : MonoBehaviour
     private Rigidbody rb;
     private Vector3 posisiAwal;
     public Transform start;
-    public Transform finish;
+    private AudioSource tabrak;
+    public AudioSource heal;
     // Start is called before the first frame update
-    
-    
+
+
     void Start()
     {
-        
+        tabrak = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         posisiAwal = new Vector3(start.position.x + 1.5f,start.position.y + 2.5f ,start.position.z -1f);
         transform.position = posisiAwal;
+        
     }
     // Update is called once per framea
     private void OnCollisionEnter(Collision collision)
@@ -25,14 +27,19 @@ public class PlayerLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Respawn"))
         {
             transform.position = posisiAwal;
+            heal.Play();
             DecTimLogic.instance.time -= 3;
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            tabrak.Play();
         }
     }
     void Update()
     {
+        
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(-1 *horizontalInput , 0f,-1 * verticalInput );
         if (  Input.GetKey(KeyCode.LeftShift))
         {
@@ -40,12 +47,10 @@ public class PlayerLogic : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R)) {
             transform.position = posisiAwal;
+            heal.Play();
             DecTimLogic.instance.time -= 3;
-
         }
-        if(DecTimLogic.instance.time <= 0) {
-            print("waktu habis");
-        }
+        
         rb.AddForce(movement);
     }
     
