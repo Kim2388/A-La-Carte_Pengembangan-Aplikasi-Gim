@@ -10,6 +10,7 @@ public class PlayerLogic : MonoBehaviour
     public Transform start;
     private AudioSource tabrak;
     public AudioSource heal;
+    private List<string> Scene;
     // Start is called before the first frame update
 
 
@@ -17,9 +18,10 @@ public class PlayerLogic : MonoBehaviour
     {
         tabrak = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-        posisiAwal = new Vector3(start.position.x + 1.5f,start.position.y + 2.5f ,start.position.z -1f);
+        posisiAwal = new Vector3(start.position.x + 1.5f, start.position.y + 2.5f, start.position.z - 1f);
         transform.position = posisiAwal;
-        
+        Scene = new List<string>();
+        Scene.Add("Level 2");
     }
     // Update is called once per framea
     private void OnCollisionEnter(Collision collision)
@@ -28,11 +30,17 @@ public class PlayerLogic : MonoBehaviour
         {
             transform.position = posisiAwal;
             heal.Play();
+            rb.Sleep();
             DecTimLogic.instance.time -= 3;
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
             tabrak.Play();
+        }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            LevelManager.instance.angka += 1;
+            SceneManager.LoadScene(Scene[LevelManager.instance.angka]);
         }
     }
     void Update()
@@ -48,6 +56,7 @@ public class PlayerLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             transform.position = posisiAwal;
             heal.Play();
+            rb.Sleep();
             DecTimLogic.instance.time -= 3;
         }
         

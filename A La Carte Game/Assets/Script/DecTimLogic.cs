@@ -30,10 +30,15 @@ public class DecTimLogic : MonoBehaviour
         if (counter % 1000 == 0) { 
             time -= 1;
         }
-        text.text = time.ToString();
+        
         if (time <= 0)
         {
             print("waktu habis");
         }
+        if(time <= 10)
+        {
+            text.color = Color.red;
+        }
+        text.text = time.ToString();
     }
 }

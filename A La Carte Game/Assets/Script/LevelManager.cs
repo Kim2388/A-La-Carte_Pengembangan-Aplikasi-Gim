@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public int angka;
     private void Start()
     {
-        angka = 1;
+        angka = -1;
     }
     private void Awake()
     {
