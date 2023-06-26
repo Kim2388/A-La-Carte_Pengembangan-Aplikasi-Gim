@@ -529,7 +529,6 @@ GameObject:
   m_Component:
   - component: {fileID: 83609892}
   - component: {fileID: 83609891}
-  - component: {fileID: 83609889}
   m_Layer: 0
   m_Name: MUSIC&DECTIME
   m_TagString: Untagged
@@ -537,19 +536,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &83609889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83609888}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7bf30f2a27e9b48acd6341ef0dc957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backsound: {fileID: 0}
 --- !u!82 &83609891
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4022,7 +4008,6 @@ GameObject:
   - component: {fileID: 855239400}
   - component: {fileID: 855239407}
   - component: {fileID: 855239406}
-  - component: {fileID: 855239409}
   - component: {fileID: 855239410}
   - component: {fileID: 855239411}
   m_Layer: 0
@@ -4240,18 +4225,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &855239409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855239399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c6844f1820a0ac47a89b876ce9287cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &855239410
 AudioSource:
   m_ObjectHideFlags: 0
