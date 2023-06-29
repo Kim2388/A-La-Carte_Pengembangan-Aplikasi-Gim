@@ -6,6 +6,7 @@ public class DecTimLogic : MonoBehaviour
 {
     public static DecTimLogic instance;
     public int time;
+    public PauseMenuLogic paused;
     private int counter;
     private TextMeshProUGUI text;
     // Start is called before the first frame update
@@ -26,11 +27,15 @@ public class DecTimLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counter += 1;
-        if (counter % 1000 == 0) { 
+        if(!paused.isPause) {
+            counter++;
+        }
+        if (counter % 1000 == 0)
+        {
             time -= 1;
         }
-        
+
+
         if (time <= 0)
         {
             print("waktu habis");

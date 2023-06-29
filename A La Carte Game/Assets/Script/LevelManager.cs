@@ -1,17 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class LevelManager : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     public static LevelManager instance;
     public int angka;
+    public List<string> Scene;
     private void Start()
     {
+
         angka = -1;
+        Scene = new List<string>();
+        Scene.Add("Level 1");
+        Scene.Add("Level 2");
+        Scene.Add("MainMenu");
     }
     private void Awake()
     {
@@ -19,5 +26,6 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
+        
     }
 }
