@@ -44,16 +44,26 @@ public class DecTimLogic : MonoBehaviour
         {
             star.StarGet = 1;
             text.color = Color.red;
+            LosePanel.SetActive(false);
+
         }
 
         if (time >= 10 && time < 40 ) {
             star.StarGet = 2;
-          }
-        if(time > 40  && time <= 60)
+            text.color = Color.white;
+            LosePanel.SetActive(false);
+
+        }
+        if (time > 40  && time <= 60)
         {
             star.StarGet = 3;
+            text.color = Color.white;
+            LosePanel.SetActive(false);
+
+
+
         }
-        
+
         if (time <= 0)
         {
             time = 0;

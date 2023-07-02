@@ -15,6 +15,7 @@ public class PauseMenuLogic : MonoBehaviour
     public Button Restart;
     public Button Help;
     public Button ExitHelp;
+    public WinPanelLogic winPanelLogic;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +36,12 @@ public class PauseMenuLogic : MonoBehaviour
     }
     void onResume()
     {
-        isPause = !isPause;
+        isPause = false;
     }
     void onRestart()
     {
-        SceneManager.LoadScene(LevelManager.instance.Scene[LevelManager.instance.angka]);
+        winPanelLogic.isRestart = true;
+   
     }
     void onHome()
     {
@@ -69,6 +71,7 @@ public class PauseMenuLogic : MonoBehaviour
                 Pause.SetActive(true);
                 Time.timeScale = 0;
             }
+            
         }
         if(isFOL)
         {

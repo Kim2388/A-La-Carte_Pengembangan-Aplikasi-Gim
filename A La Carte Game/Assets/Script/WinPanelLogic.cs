@@ -8,6 +8,8 @@ public class WinPanelLogic : MonoBehaviour
 {
     public Button Next;
     public Button Restart;
+    public bool isRestart;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class WinPanelLogic : MonoBehaviour
     }
     void onRestart()
     {
-        SceneManager.LoadScene(LevelManager.instance.Scene[LevelManager.instance.angka]);
+        isRestart = true;
     }
     // Update is called once per frame
 }

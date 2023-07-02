@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class LosePanelLogic : MonoBehaviour
 {
     // Start is called before the first frame update
     public Button Home;
     public Button Restart;
+    public WinPanelLogic winPanelLogic;
     void Start()
     {
         Home.onClick.AddListener(onHome);
@@ -22,7 +22,7 @@ public class LosePanelLogic : MonoBehaviour
     }
     void onRestart()
     {
-        SceneManager.LoadScene(LevelManager.instance.Scene[LevelManager.instance.angka]);
+        winPanelLogic.isRestart = true;
     }
     // Update is called once per frame
     

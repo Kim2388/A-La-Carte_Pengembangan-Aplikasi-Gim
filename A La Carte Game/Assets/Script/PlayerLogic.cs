@@ -13,6 +13,8 @@ public class PlayerLogic : MonoBehaviour
     public GameObject WinPanel;
     public GameObject LosePanel;
     public PauseMenuLogic Paused;
+    public LeaderboardLogic Leaderboard;
+    public WinPanelLogic winPanelLogic;
     // Start is called before the first frame update
 
 
@@ -45,7 +47,7 @@ public class PlayerLogic : MonoBehaviour
             
             Paused.isFOL = true;
             WinPanel.SetActive(true);
-            
+            Leaderboard.ScoreUser = DecTimLogic.instance.time;
         }
     }
     void Update()
@@ -54,7 +56,7 @@ public class PlayerLogic : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(-1 *horizontalInput , 0f,-1 * verticalInput );
-        if (  Input.GetKey(KeyCode.LeftShift))
+        if (  Input.GetKey(KeyCode.LeftShift)  || Input.GetKey(KeyCode.RightShift))
         {
             rb.AddForce(movement * speed);
         }
@@ -63,6 +65,19 @@ public class PlayerLogic : MonoBehaviour
             heal.Play();
             rb.Sleep();
             DecTimLogic.instance.time -= 3;
+        }
+        if (winPanelLogic.isRestart)
+        {
+            transform.position = posisiAwal;
+            heal.Play();
+            rb.Sleep();
+            Paused.isPause = false;
+            Paused.isFOL = false;
+            WinPanel.SetActive(false);
+            DecTimLogic.instance.time = 60;
+            winPanelLogic.isRestart = false;
+
+
         }
         rb.AddForce(movement);
     }
