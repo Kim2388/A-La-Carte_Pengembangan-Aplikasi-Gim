@@ -10,6 +10,9 @@ public class PlayerLogic : MonoBehaviour
     public Transform start;
     private AudioSource tabrak;
     public AudioSource heal;
+    public GameObject WinPanel;
+    public GameObject LosePanel;
+    public PauseMenuLogic Paused;
     // Start is called before the first frame update
 
 
@@ -19,6 +22,8 @@ public class PlayerLogic : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         posisiAwal = new Vector3(start.position.x + 1.5f, start.position.y + 2.5f, start.position.z - 1f);
         transform.position = posisiAwal;
+        WinPanel.SetActive(false);
+        LosePanel.SetActive(false);
         
     }
     // Update is called once per framea
@@ -37,8 +42,10 @@ public class PlayerLogic : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Finish"))
         {
-            LevelManager.instance.angka += 1;
-            SceneManager.LoadScene(LevelManager.instance.Scene[LevelManager.instance.angka]);
+            
+            Paused.isFOL = true;
+            WinPanel.SetActive(true);
+            
         }
     }
     void Update()

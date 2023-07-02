@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEngine.UIElements;
+
 public class DecTimLogic : MonoBehaviour
 {
     public static DecTimLogic instance;
     public int time;
     public PauseMenuLogic paused;
+    public GameObject LosePanel;
     private int counter;
     private TextMeshProUGUI text;
+    public StarLogic star;
     // Start is called before the first frame update
 
     private void Awake()
@@ -35,14 +40,25 @@ public class DecTimLogic : MonoBehaviour
             time -= 1;
         }
 
+        if (time <= 10)
+        {
+            star.StarGet = 1;
+            text.color = Color.red;
+        }
 
+        if (time >= 10 && time < 40 ) {
+            star.StarGet = 2;
+          }
+        if(time > 40  && time <= 60)
+        {
+            star.StarGet = 3;
+        }
+        
         if (time <= 0)
         {
-            print("waktu habis");
-        }
-        if(time <= 10)
-        {
-            text.color = Color.red;
+            time = 0;
+            paused.isFOL = true;
+            LosePanel.SetActive(true);
         }
         text.text = time.ToString();
     }
