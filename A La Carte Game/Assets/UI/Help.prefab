@@ -536,7 +536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A/s/d/f/arrow\t: move the ball\nR\t\t: Restart\nP\t\t: Pause\nF \t\t:
+  m_text: "A/S/D/W/arrow\t: move the ball\nR\t\t: Respawn\nP\t\t: Pause\nF \t\t:
     change the camera distance\nHold Right Click \t: camera rotation\nHold Shift
     \t: Increase Speed\nRelease Shift \t: Back to normal Speed"
   m_isRightToLeft: 0
