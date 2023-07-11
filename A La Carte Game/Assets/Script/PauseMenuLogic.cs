@@ -45,7 +45,7 @@ public class PauseMenuLogic : MonoBehaviour
     }
     void onHome()
     {
-        LevelManager.instance.angka = 2;
+        LevelManager.instance.angka = 0;
         SceneManager.LoadScene(LevelManager.instance.Scene[LevelManager.instance.angka]);
     }
     void onExitHelp()

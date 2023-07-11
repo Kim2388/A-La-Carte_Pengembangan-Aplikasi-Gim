@@ -15,6 +15,10 @@ public class PlayerLogic : MonoBehaviour
     public PauseMenuLogic Paused;
     public LeaderboardLogic Leaderboard;
     public WinPanelLogic winPanelLogic;
+    public List<Material> materialBall;
+    public AudioSource changeBall; 
+    private Renderer rendeBall;
+    private int rendeSelect;
     // Start is called before the first frame update
 
 
@@ -26,7 +30,8 @@ public class PlayerLogic : MonoBehaviour
         transform.position = posisiAwal;
         WinPanel.SetActive(false);
         LosePanel.SetActive(false);
-        
+        rendeBall = GetComponent<Renderer>();
+        rendeSelect = 0;
     }
     // Update is called once per framea
     private void OnCollisionEnter(Collision collision)
@@ -59,6 +64,12 @@ public class PlayerLogic : MonoBehaviour
         if (  Input.GetKey(KeyCode.LeftShift)  || Input.GetKey(KeyCode.RightShift))
         {
             rb.AddForce(movement * speed);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            rendeSelect++;
+            rendeBall.material = materialBall[rendeSelect % materialBall.Count];
+            changeBall.Play();
         }
         if (Input.GetKeyDown(KeyCode.R)) {
             transform.position = posisiAwal;

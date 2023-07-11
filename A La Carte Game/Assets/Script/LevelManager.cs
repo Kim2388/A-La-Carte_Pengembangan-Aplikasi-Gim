@@ -14,11 +14,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
 
-        angka = -1;
+        angka = 0;
         Scene = new List<string>();
+        Scene.Add("MainMenu");
         Scene.Add("Level 1");
         Scene.Add("Level 2");
-        Scene.Add("MainMenu");
+        Scene.Add("Credit");
     }
     private void Awake()
     {

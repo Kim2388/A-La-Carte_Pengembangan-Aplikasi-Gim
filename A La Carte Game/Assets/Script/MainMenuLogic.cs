@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor.SearchService;
 
 public class MainMenuLogic : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class MainMenuLogic : MonoBehaviour
     void startMenu(){
         LevelManager.instance.angka += 1;
         SceneManager.LoadScene(LevelManager.instance.Scene[LevelManager.instance.angka]);
+        
     }
     void helpMenu(){ 
        help.SetActive(true);
